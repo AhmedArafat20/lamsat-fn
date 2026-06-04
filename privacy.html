@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سياسة الخصوصية | لمسة فن</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dark: #8B6914;
+      --dark: #0D0D0D;
+      --dark-2: #161616;
+      --dark-3: #1F1F1F;
+      --cream: #F5EDD6;
+      --cream-light: #FAF5E8;
+      --white: #FFFFFF;
+      --text-muted: #888888;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--dark);
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ===================== NAVBAR ===================== */
+    nav {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      z-index: 1000;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      transition: all 0.3s;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-shadow: 0 0 20px rgba(201,168,76,0.4);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--cream);
+      font-weight: 300;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover { color: var(--gold); }
+    nav ul li a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--dark) !important;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      transition: all 0.3s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-light) !important;
+      color: var(--dark) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+    }
+
+    .nav-cta::after { display: none !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ===================== PAGE HERO ===================== */
+    .page-hero {
+      min-height: 340px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%),
+        linear-gradient(135deg, #0D0D0D 0%, #161616 50%, #0D0D0D 100%);
+    }
+
+    .page-hero-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,0.02) 40px, rgba(201,168,76,0.02) 41px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(201,168,76,0.02) 40px, rgba(201,168,76,0.02) 41px);
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-tag::before, .section-tag::after {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .page-title {
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .page-title .gold { color: var(--gold); }
+
+    .page-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Decorative gold line */
+    .gold-divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 24px auto 0;
+    }
+
+    /* ===================== CONTENT ===================== */
+    .privacy-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 40px 100px;
+    }
+
+    /* Last updated badge */
+    .update-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      color: var(--gold);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 48px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Section blocks */
+    .privacy-section {
+      margin-bottom: 52px;
+      padding: 40px;
+      background: var(--dark-2);
+      border: 1px solid rgba(201,168,76,0.08);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .privacy-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .privacy-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .privacy-section:hover {
+      border-color: rgba(201,168,76,0.2);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+
+    .privacy-section:hover::before { transform: scaleX(1); }
+
+    .section-number {
+      font-size: 48px;
+      font-weight: 800;
+      color: rgba(201,168,76,0.08);
+      line-height: 1;
+      margin-bottom: -8px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .section-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+
+    .privacy-section:hover .section-icon {
+      background: rgba(201,168,76,0.18);
+      transform: scale(1.05);
+    }
+
+    .section-h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .privacy-section p {
+      font-size: 16px;
+      color: #AAAAAA;
+      line-height: 1.95;
+      font-weight: 400;
+    }
+
+    .privacy-section p + p { margin-top: 14px; }
+
+    .privacy-section ul {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .privacy-section ul li {
+      font-size: 16px;
+      color: #AAAAAA;
+      line-height: 1.9;
+      padding: 8px 0;
+      padding-right: 24px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .privacy-section ul li:last-child { border-bottom: none; }
+
+    .privacy-section ul li::before {
+      content: '✦';
+      position: absolute;
+      right: 0;
+      color: var(--gold);
+      font-size: 10px;
+      top: 12px;
+    }
+
+    .highlight-box {
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-top: 20px;
+      font-size: 15px;
+      color: var(--cream);
+      line-height: 1.8;
+    }
+
+    .highlight-box strong { color: var(--gold); }
+
+    /* Contact strip */
+    .contact-strip {
+      margin-top: 64px;
+      padding: 44px 40px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .contact-strip h3 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .contact-strip p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .strip-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--dark);
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 8px 32px rgba(201,168,76,0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(201,168,76,0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: 1.5px solid var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: rgba(201,168,76,0.1);
+      transform: translateY(-3px);
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background: var(--dark-2);
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 40px 0;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 16px;
+      text-shadow: 0 0 20px rgba(201,168,76,0.3);
+    }
+
+    .footer-logo span { color: var(--cream); font-weight: 300; }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+
+    .social-btn:hover {
+      background: rgba(201,168,76,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(201,168,76,0.2);
+    }
+
+    .footer-col-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-copy span { color: var(--gold); }
+
+    /* ===================== FLOATING BUTTONS ===================== */
+    .float-btns {
+      position: fixed;
+      bottom: 28px;
+      left: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+
+    .float-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Tajawal', sans-serif;
+      transition: all 0.3s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .float-whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    .float-call {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .float-btn:hover { transform: translateY(-3px) scale(1.04); }
+
+    .fb-icon { font-size: 18px; }
+
+    /* Scroll to top */
+    #scrollTop {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 48px;
+      height: 48px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      z-index: 999;
+    }
+
+    #scrollTop.visible { opacity: 1; pointer-events: auto; }
+    #scrollTop:hover { background: rgba(201,168,76,0.25); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+
+      .page-title { font-size: 36px; }
+      .page-hero-content { padding: 40px 20px; }
+      .privacy-content { padding: 48px 20px 80px; }
+      .privacy-section { padding: 28px 24px; }
+      .contact-strip { padding: 32px 24px; }
+      .footer-top { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+
+      .float-btn span:not(.fb-icon) { display: none; }
+      .float-btn { padding: 14px; border-radius: 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="logo">لمسة <span>فن</span></a>
+    <ul>
+      <li><a href="index.html#services">خدماتنا</a></li>
+      <li><a href="index.html#portfolio">أعمالنا</a></li>
+      <li><a href="index.html#why-us">لماذا نحن</a></li>
+      <li><a href="about.html">من نحن</a></li>
+      <li><a href="index.html#contact" class="nav-cta">تواصل معنا</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-pattern"></div>
+    <div class="page-hero-content">
+      <div class="section-tag">✦ الشفافية والثقة ✦</div>
+      <h1 class="page-title">سياسة <span class="gold">الخصوصية</span></h1>
+      <p class="page-sub">نلتزم بحماية بياناتك الشخصية واحترام خصوصيتك في كل تعاملاتك معنا</p>
+      <div class="gold-divider"></div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="privacy-content">
+
+    <div class="update-badge">🗓️ آخر تحديث: يناير 2025</div>
+
+    <!-- 1 -->
+    <div class="privacy-section">
+      <div class="section-number">01</div>
+      <div class="section-heading">
+        <div class="section-icon">📋</div>
+        <h2 class="section-h2">مقدمة وقبول الشروط</h2>
+      </div>
+      <p>
+        مرحباً بك في موقع <strong style="color:var(--gold)">لمسة فن</strong>، المتخصص في خدمات الدهانات وورق الحائط وبديل الخشب وبديل الرخام والديكورات الداخلية والتشطيبات الفاخرة في جدة، المملكة العربية السعودية.
+      </p>
+      <p>
+        تُوضّح هذه السياسة كيفية جمع معلوماتك الشخصية واستخدامها وحمايتها عند تصفحك لموقعنا أو تواصلك معنا. باستخدامك لموقعنا أو خدماتنا، فإنك توافق على الشروط الواردة في هذه السياسة.
+      </p>
+    </div>
+
+    <!-- 2 -->
+    <div class="privacy-section">
+      <div class="section-number">02</div>
+      <div class="section-heading">
+        <div class="section-icon">📊</div>
+        <h2 class="section-h2">المعلومات التي نجمعها</h2>
+      </div>
+      <p>قد نجمع الأنواع التالية من المعلومات عند تفاعلك معنا:</p>
+      <ul>
+        <li><strong style="color:var(--cream)">بيانات التواصل:</strong> الاسم ورقم الجوال عند إرسال نموذج الاستفسار أو التواصل عبر واتساب.</li>
+        <li><strong style="color:var(--cream)">تفاصيل المشروع:</strong> نوع الخدمة المطلوبة ووصف المشروع الذي تدلي به طوعاً.</li>
+        <li><strong style="color:var(--cream)">بيانات التصفح:</strong> معلومات تقنية مثل عنوان IP ونوع المتصفح وصفحات الموقع التي تزورها، وذلك بصورة مجمّعة ومجهولة الهوية.</li>
+        <li><strong style="color:var(--cream)">الموقع الجغرافي العام:</strong> المدينة أو الحي الذي تذكره في الرسالة لأغراض تقديم الخدمة.</li>
+      </ul>
+    </div>
+
+    <!-- 3 -->
+    <div class="privacy-section">
+      <div class="section-number">03</div>
+      <div class="section-heading">
+        <div class="section-icon">🎯</div>
+        <h2 class="section-h2">كيف نستخدم معلوماتك</h2>
+      </div>
+      <p>نستخدم المعلومات التي نجمعها للأغراض التالية حصراً:</p>
+      <ul>
+        <li>التواصل معك للرد على استفساراتك وتقديم عروض الأسعار.</li>
+        <li>جدولة المواعيد وتنسيق أعمال الدهانات والديكور.</li>
+        <li>تحسين خدماتنا وتطوير تجربة الموقع.</li>
+        <li>إرسال تحديثات تخص طلبك أو مشروعك القائم.</li>
+        <li>الامتثال للمتطلبات القانونية والتنظيمية في المملكة العربية السعودية.</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>تأكيد مهم:</strong> لن نستخدم بياناتك لأغراض تسويقية غير مرغوب فيها، ولن نشاركها مع أطراف ثالثة لأغراض إعلانية بأي شكل من الأشكال.
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="privacy-section">
+      <div class="section-number">04</div>
+      <div class="section-heading">
+        <div class="section-icon">🔒</div>
+        <h2 class="section-h2">حماية معلوماتك</h2>
+      </div>
+      <p>
+        نتخذ تدابير أمنية مناسبة لحماية معلوماتك من الوصول غير المصرح به أو الكشف أو التعديل أو الإتلاف.
+      </p>
+      <p>
+        يتم تشفير الاتصالات عبر بروتوكول HTTPS، ولا يُخزَّن أي بيانات حساسة على الموقع. عند تواصلك عبر واتساب، تسري عليك سياسة خصوصية واتساب الخاصة وهي منصة مشفرة تشفيراً كاملاً.
+      </p>
+    </div>
+
+    <!-- 5 -->
+    <div class="privacy-section">
+      <div class="section-number">05</div>
+      <div class="section-heading">
+        <div class="section-icon">🤝</div>
+        <h2 class="section-h2">مشاركة المعلومات مع أطراف ثالثة</h2>
+      </div>
+      <p>لا نبيع أو نؤجر أو نشارك معلوماتك الشخصية مع أي طرف ثالث، باستثناء الحالات التالية:</p>
+      <ul>
+        <li><strong style="color:var(--cream)">متطلبات قانونية:</strong> إذا كان الإفصاح مطلوباً بموجب أحكام نظام حماية البيانات الشخصية في المملكة العربية السعودية أو أمر قضائي.</li>
+        <li><strong style="color:var(--cream)">حماية الحقوق:</strong> عند الضرورة للدفاع عن حقوقنا القانونية أو حماية سلامة العملاء.</li>
+        <li><strong style="color:var(--cream)">موردو الخدمات:</strong> شركاء تشغيليون موثوقون يساعدوننا في تقديم الخدمة (كفرق التنفيذ)، مع التزامهم بالسرية التامة.</li>
+      </ul>
+    </div>
+
+    <!-- 6 -->
+    <div class="privacy-section">
+      <div class="section-number">06</div>
+      <div class="section-heading">
+        <div class="section-icon">🍪</div>
+        <h2 class="section-h2">ملفات تعريف الارتباط (Cookies)</h2>
+      </div>
+      <p>
+        قد يستخدم موقعنا ملفات تعريف الارتباط الأساسية لتحسين تجربة التصفح. لا نستخدم ملفات تعريف ارتباط تتبعية أو إعلانية.
+      </p>
+      <p>
+        يمكنك تعطيل ملفات تعريف الارتباط من إعدادات متصفحك في أي وقت، علماً بأن ذلك قد يؤثر على بعض وظائف الموقع.
+      </p>
+    </div>
+
+    <!-- 7 -->
+    <div class="privacy-section">
+      <div class="section-number">07</div>
+      <div class="section-heading">
+        <div class="section-icon">⚖️</div>
+        <h2 class="section-h2">حقوقك كمستخدم</h2>
+      </div>
+      <p>وفقاً لنظام حماية البيانات الشخصية في المملكة العربية السعودية، لديك الحقوق التالية:</p>
+      <ul>
+        <li>الاطلاع على البيانات الشخصية التي نحتفظ بها عنك.</li>
+        <li>طلب تصحيح أي معلومات غير دقيقة أو ناقصة.</li>
+        <li>طلب حذف بياناتك الشخصية في حدود ما يسمح به النظام.</li>
+        <li>الاعتراض على معالجة بياناتك لأغراض معينة.</li>
+        <li>سحب موافقتك في أي وقت دون التأثير على مشروعية المعالجة السابقة.</li>
+      </ul>
+      <div class="highlight-box">
+        لممارسة أي من هذه الحقوق، تواصل معنا عبر واتساب على <strong>0564208960</strong> وسنستجيب خلال 7 أيام عمل.
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="privacy-section">
+      <div class="section-number">08</div>
+      <div class="section-heading">
+        <div class="section-icon">🔗</div>
+        <h2 class="section-h2">روابط المواقع الخارجية</h2>
+      </div>
+      <p>
+        قد يحتوي موقعنا على روابط لمواقع خارجية مثل واتساب أو منصات التواصل الاجتماعي. لا نتحمل أي مسؤولية عن ممارسات الخصوصية الخاصة بهذه المواقع، ونشجعك على مراجعة سياسات الخصوصية الخاصة بها.
+      </p>
+    </div>
+
+    <!-- 9 -->
+    <div class="privacy-section">
+      <div class="section-number">09</div>
+      <div class="section-heading">
+        <div class="section-icon">🔄</div>
+        <h2 class="section-h2">تحديثات السياسة</h2>
+      </div>
+      <p>
+        نحتفظ بحق تحديث هذه السياسة في أي وقت لتعكس التغييرات في ممارساتنا أو متطلبات النظام. سيتم نشر أي تغييرات على هذه الصفحة مع تحديث تاريخ آخر مراجعة.
+      </p>
+      <p>
+        نوصيك بمراجعة هذه الصفحة دورياً للاطلاع على أي تحديثات. استمرارك في استخدام موقعنا بعد نشر التغييرات يُعدّ موافقةً ضمنيةً على السياسة المحدّثة.
+      </p>
+    </div>
+
+    <!-- Contact Strip -->
+    <div class="contact-strip">
+      <h3>هل لديك استفسار حول خصوصيتك؟</h3>
+      <p>فريقنا جاهز للإجابة على جميع تساؤلاتك بشأن سياسة الخصوصية أو بياناتك الشخصية</p>
+      <div class="strip-btns">
+        <a href="https://wa.me/966564208960" class="btn-primary">💬 تواصل عبر واتساب</a>
+        <a href="tel:0564208960" class="btn-outline">📞 اتصل بنا</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">لمسة <span>فن</span></div>
+          <p class="footer-tagline">متخصصون في الدهانات وورق الحائط وبديل الخشب وبديل الرخام والديكورات والتشطيبات في جدة.</p>
+          <div class="footer-social">
+            <a href="https://wa.me/966564208960" class="social-btn" title="واتساب">💬</a>
+            <a href="tel:0564208960" class="social-btn" title="اتصال">📞</a>
+            <a href="#" class="social-btn" title="انستجرام">📷</a>
+            <a href="#" class="social-btn" title="تيك توك">🎵</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">خدماتنا</div>
+          <ul class="footer-links">
+            <li><a href="index.html#services">دهانات داخلية وخارجية</a></li>
+            <li><a href="index.html#services">ورق الحائط</a></li>
+            <li><a href="index.html#services">بديل الخشب</a></li>
+            <li><a href="index.html#services">بديل الرخام</a></li>
+            <li><a href="index.html#services">ديكورات داخلية</a></li>
+            <li><a href="index.html#services">تشطيبات متكاملة</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">روابط سريعة</div>
+          <ul class="footer-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="index.html#portfolio">أعمالنا</a></li>
+            <li><a href="about.html">من نحن</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
+            <li><a href="privacy.html" style="color:var(--gold);">سياسة الخصوصية</a></li>
+            <li><a href="tel:0564208960">0564208960</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 <span>لمسة فن</span> — جميع الحقوق محفوظة</div>
+        <div class="footer-copy">صُنع بـ ❤️ في <span>جدة</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BUTTONS -->
+  <div class="float-btns">
+    <a href="https://wa.me/966564208960" class="float-btn float-whatsapp" target="_blank">
+      <span class="fb-icon">💬</span>
+      <span>واتساب</span>
+    </a>
+    <a href="tel:0564208960" class="float-btn float-call">
+      <span class="fb-icon">📞</span>
+      <span>اتصل الآن</span>
+    </a>
+  </div>
+
+  <!-- SCROLL TO TOP -->
+  <a href="#" id="scrollTop">↑</a>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 60) {
+        nav.style.padding = '12px 40px';
+        nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.5)';
+      } else {
+        nav.style.padding = '18px 40px';
+        nav.style.boxShadow = 'none';
+      }
+
+      const btn = document.getElementById('scrollTop');
+      btn.classList.toggle('visible', window.scrollY > 400);
+    });
+
+    // Reveal sections on scroll
+    const sections = document.querySelectorAll('.privacy-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(el => observer.observe(el));
+
+    // Mobile hamburger
+    document.getElementById('hamburger').addEventListener('click', function() {
+      const ul = document.querySelector('nav ul');
+      if (ul.style.display === 'flex') {
+        ul.style.display = 'none';
+      } else {
+        ul.style.display = 'flex';
+        ul.style.flexDirection = 'column';
+        ul.style.position = 'absolute';
+        ul.style.top = '70px';
+        ul.style.right = '0';
+        ul.style.left = '0';
+        ul.style.background = 'rgba(13,13,13,0.98)';
+        ul.style.padding = '20px 40px';
+        ul.style.borderBottom = '1px solid rgba(201,168,76,0.1)';
+        ul.style.gap = '20px';
+      }
+    });
+  </script>
+
+</body>
+</html>
